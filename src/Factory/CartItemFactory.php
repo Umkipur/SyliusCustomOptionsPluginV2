@@ -20,6 +20,7 @@ use Sylius\Component\Core\Model\OrderItemInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Product\Resolver\ProductVariantResolverInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
+use Sylius\Component\Order\Modifier\OrderItemQuantityModifierInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Webmozart\Assert\Assert;
@@ -34,8 +35,9 @@ class CartItemFactory implements CartItemFactoryInterface
         private RequestStack $requestStack,
         private OrderItemOptionFactoryInterface $orderItemOptionFactory,
         private CustomerOptionRepositoryInterface $customerOptionRepository,
+        private OrderItemQuantityModifierInterface $orderItemQuantityModifier
     ) {
-        $this->decoratedFactory = new \Sylius\Component\Core\Factory\CartItemFactory($decoratedFactory, $variantResolver);
+        $this->decoratedFactory = new \Sylius\Component\Core\Factory\CartItemFactory($decoratedFactory, $variantResolver, $orderItemQuantityModifier);
     }
 
     public function createForProduct(ProductInterface $product): OrderItemInterface
