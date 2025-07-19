@@ -1,5 +1,9 @@
-sylius_ui:
-  events:
+sylius_twig_hooks:
+  hooks:
+    # the hook point you’re plugging into:
     sylius.admin.layout.javascripts:
-      blocks:
-        brille24_customer_options.admin.layout.javascripts: '@Brille24SyliusCustomerOptionsPlugin/Product/Tab/_javascripts.html.twig'
+      # your “block” (you can choose the key):
+      brille24_customer_options.admin.layout.javascripts:
+        template: '@Brille24SyliusCustomerOptionsPlugin/Product/Tab/_javascripts.html.twig'
+        # optional; controls ordering if multiple JS blocks are registered
+        priority: 0
