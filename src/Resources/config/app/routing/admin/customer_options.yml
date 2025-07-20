@@ -2,7 +2,7 @@ brille24_customer_options_admin:
     resource: |
         alias: brille24.customer_option
         section: admin
-        templates: '@SyliusAdminUi/crud'
+        templates: '@Brille24SyliusCustomerOptionsPlugin/CustomerOption/_form.html.twig'
         except: ['show']
         redirect: update
         grid: brille24_admin_customer_option_grid
