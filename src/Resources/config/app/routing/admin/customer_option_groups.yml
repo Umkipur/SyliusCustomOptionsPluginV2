@@ -2,7 +2,7 @@ brille24_customer_option_groups_admin:
     resource: |
         alias: brille24.customer_option_group
         section: admin
-        templates: '@SyliusAdmin/Crud'
+        templates: '@SyliusAdminUi/Crud'
         except: ['show']
         redirect: update
         grid: brille24_admin_customer_option_group_grid
