@@ -1,5 +1,10 @@
-{% import '@SyliusUi/Macro/buttons.html.twig' as buttons %}
-
 {% set path = options.link.url|default(path(options.link.route)) %}
 
-{{ buttons.default(path, action.label, 'sylius_admin_customer_option_refresh_elasticsearch', options.icon, 'yellow') }}
+<a href="{{ path }}"
+   class="ui yellow labeled icon button"
+   id="sylius_admin_customer_option_refresh_elasticsearch">
+    {% if options.icon is defined %}
+        <i class="{{ options.icon }} icon"></i>
+    {% endif %}
+    {{ action.label|trans }}
+</a>

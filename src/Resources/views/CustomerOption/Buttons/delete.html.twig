@@ -1,11 +1,23 @@
-{% import '@SyliusUi/Macro/buttons.html.twig' as buttons %}
-
-{% set path = options.link.url|default(path(options.link.route|default(grid.requestConfiguration.getRouteName('delete')), options.link.parameters|default({'id': data.id}))) %}
+{% set path = options.link.url|default(
+    path(
+        options.link.route|default(grid.requestConfiguration.getRouteName('delete')),
+        options.link.parameters|default({'id': data.id})
+    )
+) %}
 
 {% if customer_option_in_use(data) %}
     <div title="{{ 'brille24.grid.delete_not_allowed'|trans }}">
-        {{ buttons.default(path, action.label, data.id, "delete", "disabled") }}
+        <button class="ui icon disabled red button">
+            <i class="trash icon"></i>
+            {{ action.label|trans }}
+        </button>
     </div>
 {% else %}
-    {{ buttons.delete(path, action.label, true, data.id) }}
+    <form method="post" action="{{ path }}" onsubmit="return confirm('{{ 'sylius.ui.confirm_delete'|trans }}');">
+        <input type="hidden" name="_method" value="DELETE">
+        <button type="submit" class="ui icon red button" id="delete_{{ data.id }}">
+            <i class="trash icon"></i>
+            {{ action.label|trans }}
+        </button>
+    </form>
 {% endif %}
