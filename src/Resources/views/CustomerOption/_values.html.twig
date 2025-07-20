@@ -1,4 +1,10 @@
 {% form_theme form '@Brille24SyliusCustomerOptionsPlugin/CustomerOption/_customerOption_value.html.twig' %}
 
-<h3 class="ui dividing header">{{ 'sylius.ui.values'|trans }}</h3>
-{{ form_row(form) }}
+<div class="card mb-4">
+    <div class="card-header">
+        {{ 'sylius.ui.values'|trans }}
+    </div>
+    <div class="card-body">
+        {{ form_row(form) }}
+    </div>
+</div>

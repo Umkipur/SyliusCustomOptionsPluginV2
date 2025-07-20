@@ -1,38 +1,33 @@
 {% set channels = {} %}
-
 {% for price in form %}
     {% set code = price.channel.code.vars.value %}
-
     {% if channels[code] is not defined %}
-        {% set channels = channels|merge({
-            (code): [price]
-        }) %}
+        {% set channels = channels|merge({ (code): [price] }) %}
     {% else %}
-        {% set channel = channels[code] %}
-        {% set channel = channel|merge([price]) %}
-        {% set channels = channels|merge({
-            (code): channel
-        }) %}
+        {% set channels = channels|merge({ (code): channels[code]|merge([price]) }) %}
     {% endif %}
 {% endfor %}
 
-<div class="ui segment">
-    <div class="ui top attached tabular menu">
-        {% for channel in channels %}
-            {% set class = loop.first ? "item active" : "item" %}
-
-            <a class="{{ class }}" data-tab="{{ channel[0].channel.code.vars.value }}">
+<ul class="nav nav-tabs mb-3" role="tablist">
+    {% for channel in channels %}
+        <li class="nav-item" role="presentation">
+            <a class="nav-link {% if loop.first %}active{% endif %}"
+               data-bs-toggle="tab"
+               href="#{{ channel[0].channel.code.vars.value }}"
+               role="tab">
                 {{ channel[0].channel.name.vars.value }}
             </a>
-        {% endfor %}
-    </div>
+        </li>
+    {% endfor %}
+</ul>
 
+<div class="tab-content">
     {% for channel in channels %}
-        {% set class = loop.first ? "ui bottom attached tab segment active" : "ui bottom attached tab segment" %}
-
-        <div class="{{ class }}" data-tab="{{ channel[0].channel.code.vars.value }}">
+        <div class="tab-pane fade {% if loop.first %}show active{% endif %}"
+             id="{{ channel[0].channel.code.vars.value }}"
+             role="tabpanel">
             {% for price in channel %}
-                <div class="ui field">
+                <div class="mb-3">
                     {{ form_row(price.percent) }}
                     {{ form_row(price.amount, {'currency': price.channel.baseCurrency.vars.value }) }}
                     {{ form_row(price.type) }}
