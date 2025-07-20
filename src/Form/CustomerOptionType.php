@@ -31,6 +31,7 @@ final class CustomerOptionType extends AbstractResourceType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         // Array keys are the constants and the values are the translations
+        dump('💥 Using Brille24 CustomerOptionType!');
         $possibleTypes = CustomerOptionTypeEnum::getTranslateArray();
 
         $builder
