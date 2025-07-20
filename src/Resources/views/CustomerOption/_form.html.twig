@@ -1,35 +1,22 @@
-{# src/Resources/views/CustomerOption/_form.html.twig #}
+{% from '@SyliusAdmin/Macro/translationForm.html.twig' import translationForm %}
 
-{% extends '@SyliusAdminUi/Crud/_form.html.twig' %}
+{{ form_errors(form) }}
 
-{% form_theme form '@SyliusAdmin/Form/bootstrap_5_layout.html.twig' %}
-
-{% block sylius_admin_crud_form %}
-    <div class="card mb-4">
-        <div class="card-header">
-            {{ 'sylius.ui.details'|trans }}
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-4">{{ form_row(form.code) }}</div>
-                <div class="col-md-4">{{ form_row(form.type, {'attr': {'onchange': 'this.form.submit();'}}) }}</div>
-                <div class="col-md-4">{{ form_row(form.required) }}</div>
-            </div>
-            {{ form_row(form.translations) }}
-        </div>
+<div class="ui segment">
+    <h3 class="ui dividing header">{{ 'sylius.ui.details'|trans }}</h3>
+    <div class="three fields">
+        {{ form_row(form.code) }}
+        {{ form_row(form.type, {'attr': {'onChange': "form.submit()"}}) }}
+        {{ form_row(form.required) }}
     </div>
+    {{ translationForm(form.translations) }}
+</div>
 
+<div class="ui segment">
     {% set customerOptionType = form.type.vars.value %}
-    <div class="card mb-4">
-        <div class="card-header">
-            {{ 'brille24.ui.configuration'|trans }}
-        </div>
-        <div class="card-body">
-            {% if customerOptionType in ['select', 'multi_select'] %}
-                {{ form_row(form.values) }}
-            {% else %}
-                {{ form_row(form.configuration) }}
-            {% endif %}
-        </div>
-    </div>
-{% endblock %}
+    {% if customerOptionType == 'select' or customerOptionType == 'multi_select' %}
+        {% include '@Brille24SyliusCustomerOptionsPlugin/CustomerOption/_values.html.twig' with {'form': form.values} only %}
+    {% else %}
+        {% include '@Brille24SyliusCustomerOptionsPlugin/CustomerOption/_configuration.html.twig' with {'form': form.configuration} only %}
+    {% endif %}
+</div>

@@ -2,7 +2,6 @@ sylius_grid:
     templates:
         action:
             import_prices: '@Brille24SyliusCustomerOptionsPlugin/Grid/Action/import_prices.html.twig'
-            delete_unused_customer_option: '@Brille24SyliusCustomerOptionsPlugin/CustomerOption/Buttons/delete.html.twig'
     grids:
         brille24_admin_customer_option_grid:
             driver:
