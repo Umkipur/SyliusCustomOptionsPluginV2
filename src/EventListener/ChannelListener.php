@@ -29,7 +29,7 @@ final class ChannelListener
 
     public function prePersist(PrePersistEventArgs $args): void
     {
-        $entity = $args->getEntity();
+        $entity = $args->getObject();
 
         if ($entity instanceof ChannelInterface) {
             $this->addNewChannelToAllValues($entity, $args->getEntityManager());
