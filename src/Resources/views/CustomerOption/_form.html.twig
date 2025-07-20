@@ -26,7 +26,7 @@
         </div>
         <div class="card-body">
             {% if customerOptionType in ['select', 'multi_select'] %}
-                {% include '@Brille24SyliusCustomerOptionsPlugin/CustomerOption/_values.html.twig' with {'form': form.values} %}
+                {{ form_row(form.values) }}
             {% else %}
                 {{ form_row(form.configuration) }}
             {% endif %}
