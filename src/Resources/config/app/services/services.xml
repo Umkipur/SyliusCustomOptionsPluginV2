@@ -26,5 +26,8 @@
             <tag name="sylius.order_processor" priority="60" />
         </service>
 
+        <service id="Sylius\Resource\Doctrine\Persistence\RepositoryInterface $repository" alias="brille24.customer_options_plugin.repository.customer_option" />
+
+
     </services>
 </container>
