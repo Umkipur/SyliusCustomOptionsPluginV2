@@ -28,12 +28,6 @@ final class CustomerOptionValueType extends AbstractResourceType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('code', TextType::class, [
-                'label' => 'sylius.ui.code',
-                'empty_data' => function () {
-                    return uniqid('opt_', true);
-                },
-            ])
             ->add('translations', ResourceTranslationsType::class, [
                 'entry_type' => CustomerOptionValueTranslationType::class,
             ])
