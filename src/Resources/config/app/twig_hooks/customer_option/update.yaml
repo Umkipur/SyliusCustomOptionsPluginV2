@@ -57,9 +57,6 @@ sylius_twig_hooks:
       translations:
         template: '@Brille24SyliusCustomerOptionsPlugin/customer_option/form/sections/values/value/translations.html.twig'
         priority: 100
-      prices:
-        template: '@Brille24SyliusCustomerOptionsPlugin/customer_option/form/sections/values/value/prices.html.twig'
-        priority: 0
       button_delete:
         template: '@Brille24SyliusCustomerOptionsPlugin/customer_option/form/sections/values/value/button_delete.html.twig'
         priority: 0
