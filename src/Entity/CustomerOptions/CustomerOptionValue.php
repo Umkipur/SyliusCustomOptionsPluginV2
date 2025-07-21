@@ -39,7 +39,7 @@ class CustomerOptionValue implements CustomerOptionValueInterface, \Stringable
     protected ?int $id = null;
 
     #[ORM\Column(type: 'string')]
-    protected string $code;
+    protected ?string $code;
 
     #[ORM\OneToMany(mappedBy: 'customerOptionValue', targetEntity: COValuePriceInterface::class, cascade: ['persist', 'remove'])]
     protected Collection $prices;
@@ -69,7 +69,7 @@ class CustomerOptionValue implements CustomerOptionValueInterface, \Stringable
     /**
      * @inheritdoc
      */
-    public function setCode(string $code): void
+    public function setCode(?string $code): void
     {
         $this->code = $code;
     }
