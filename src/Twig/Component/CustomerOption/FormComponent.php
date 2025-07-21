@@ -11,7 +11,7 @@ use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveAction;
 use Symfony\UX\LiveComponent\Attribute\LiveArg;
 
-#[AsLiveComponent(name: 'brille24:customer_option:form')]
+#[AsLiveComponent]
 class FormComponent {
     use LiveCollectionTrait;
 
