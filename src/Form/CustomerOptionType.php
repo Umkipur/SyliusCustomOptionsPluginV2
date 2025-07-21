@@ -19,7 +19,7 @@ use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\UX\LiveComponent\Form\Type\LiveCollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Sylius\Bundle\ResourceBundle\Form\EventSubscriber\AddCodeFormSubscriber;
@@ -50,7 +50,7 @@ final class CustomerOptionType extends AbstractResourceType
                 'entry_type' => CustomerOptionTranslationType::class,
                 'label' => 'sylius.form.option.name',
             ])
-            ->add('values', CollectionType::class, [
+            ->add('values', LiveCollectionType::class, [
                 'entry_type' => CustomerOptionValueType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
