@@ -21,7 +21,7 @@ use Sylius\Resource\Model\CodeAwareInterface;
 
 interface CustomerOptionValueInterface extends ResourceInterface, CodeAwareInterface, TranslatableInterface
 {
-    public function setCode(string $code): void;
+    public function setCode(?string $code): void;
 
     /**
      * @return string
