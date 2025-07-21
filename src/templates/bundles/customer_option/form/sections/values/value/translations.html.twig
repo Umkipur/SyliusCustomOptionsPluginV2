@@ -17,7 +17,19 @@
             <div>
                 <div class="input-group">
                     {{ form_widget(translation_form.value) }}
-     
+                    <button
+                        type="button"
+                        class="btn btn-icon"
+                        data-bs-toggle="tooltip"
+                        data-bs-title="{{ 'sylius.ui.apply_to_all'|trans }}"
+                        data-action="live#action:prevent"
+                        data-live-action-param="applyToAll"
+                        data-live-value-key-param="{{ hookable_metadata.context.value_form_key }}"
+                        data-live-translation-key-param="{{ translation_form_key }}"
+                        {{ sylius_test_html_attribute('apply-to-all') }}
+                    >
+                        {{ ux_icon('tabler:copy-plus') }}
+                    </button>
                     {{ form_errors(translation_form.value) }}
                 </div>
             </div>
