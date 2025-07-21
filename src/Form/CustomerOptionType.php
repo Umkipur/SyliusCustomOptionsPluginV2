@@ -33,6 +33,7 @@ final class CustomerOptionType extends AbstractResourceType
     {
         // Array keys are the constants and the values are the translations
         $possibleTypes = CustomerOptionTypeEnum::getTranslateArray();
+        $typeValue = $options['data']?->getType();
 
         $builder
             ->add('code', TextType::class, [
@@ -42,6 +43,8 @@ final class CustomerOptionType extends AbstractResourceType
             ->add('type', ChoiceType::class, [
                 'label' => 'sylius.ui.type',
                 'choices' => array_flip($possibleTypes),
+                'data' => $typeValue,
+                'required' => true,
             ])
             ->add('required', CheckboxType::class, [
                 'label' => 'brille24.ui.required',
