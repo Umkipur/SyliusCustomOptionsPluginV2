@@ -16,7 +16,7 @@
             </div>
             <div>
                 <div class="input-group">
-                    {{ form_widget(translation_form.value) }}
+                    {{ form_widget(translation_form.name) }}
                     <button
                         type="button"
                         class="btn btn-icon"
@@ -30,7 +30,7 @@
                     >
                         {{ ux_icon('tabler:copy-plus') }}
                     </button>
-                    {{ form_errors(translation_form.value) }}
+                    {{ form_errors(translation_form.name) }}
                 </div>
             </div>
         </div>
