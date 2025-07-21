@@ -33,8 +33,11 @@ sylius_twig_hooks:
       code:
         template: '@Brille24SyliusCustomerOptionsPlugin/customer_option/form/sections/general/code.html.twig'
         priority: 100
-      position:
-        template: '@Brille24SyliusCustomerOptionsPlugin/customer_option/form/sections/general/position.html.twig'
+      type:
+        template: '@Brille24SyliusCustomerOptionsPlugin/customer_option/form/sections/general/type.html.twig'
+        priority: 0
+      required:
+        template: '@Brille24SyliusCustomerOptionsPlugin/customer_option/form/sections/general/required.html.twig'
         priority: 0
 
     'sylius_admin.customer_option.update.content.form.sections.translations':
