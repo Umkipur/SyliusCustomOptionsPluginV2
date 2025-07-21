@@ -4,10 +4,10 @@
     </div>
     <div class="card-body">
         <div class="row" {{ sylius_test_html_attribute('option-values') }}>
-            {{ form_errors(form.values) }}
+            {{ form_errors(hookable_metadata.context.form.values) }}
 
-            {% for value_form in form.values %}
-                {% hook 'sylius_admin.customer_option.update.content.form.sections.values' with { form: value_form } %}
+            {% for value_form_key, value_form in hookable_metadata.context.form.values %}
+                {% hook 'values' with { value_form, value_form_key } %}
             {% endfor %}
         </div>
 
