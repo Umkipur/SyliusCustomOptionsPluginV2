@@ -6,16 +6,5 @@
 
             <tag name="twig.extension" />
         </service>
-        <service
-                id="brille24.twig.component.customer_option.form"
-                class="Brille24\SyliusCustomerOptionsPlugin\Twig\Component\CustomerOption\FormComponent"
-        >
-            <argument type="service" id="brille24.repository.customer_option" />
-            <argument type="service" id="form.factory" />
-            <argument>%sylius.model.product_option.class%</argument>
-            <argument>Brille24\SyliusCustomerOptionsPlugin\Form\CustomerOptionType</argument>
-
-            <tag name="sylius.live_component.admin" key="brille24:customer_option:form" />
-        </service>
     </services>
 </container>
