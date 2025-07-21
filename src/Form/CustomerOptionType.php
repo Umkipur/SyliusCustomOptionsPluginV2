@@ -22,6 +22,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Sylius\Bundle\ResourceBundle\Form\EventSubscriber\AddCodeFormSubscriber;
 
 final class CustomerOptionType extends AbstractResourceType
 {
@@ -47,30 +48,22 @@ final class CustomerOptionType extends AbstractResourceType
             ])
             ->add('translations', ResourceTranslationsType::class, [
                 'entry_type' => CustomerOptionTranslationType::class,
-                'label' => 'brille24.form.customer_options.translations',
+                'label' => 'sylius.form.option.name',
             ])
             ->add('values', CollectionType::class, [
                 'entry_type' => CustomerOptionValueType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
-                'label' => false,
                 'by_reference' => false,
+                'label' => false,
+                'button_add_label' => 'sylius.form.option_value.add_value',
             ])
             ->add('configuration', CustomerOptionConfigurationType::class, [
                 'label' => false,
             ])
+            ->addEventSubscriber(new AddCodeFormSubscriber())
         ;
 
-        $builder->get('values')->addModelTransformer(new CallbackTransformer(
-            function ($a) {
-                if ($a instanceof Collection) {
-                    return $a->toArray();
-                }
-
-                return $a;
-            },
-            fn ($a) => $a,
-        ));
     }
 
     /**
