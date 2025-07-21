@@ -12,7 +12,7 @@
         >
             <argument type="service" id="brille24.customer_options_plugin.repository.customer_option" />
             <argument type="service" id="form.factory" />
-            <argument>Brille24\SyliusCustomerOptionsPlugin\Entity\CustomerOption</argument>
+            <argument>Brille24\SyliusCustomerOptionsPlugin\Entity\CustomerOptions\CustomerOption</argument>
             <argument>Brille24\SyliusCustomerOptionsPlugin\Form\CustomerOptionType</argument>
 
             <tag name="sylius.live_component.admin" key="brille24:customer_option:form" />
