@@ -17,8 +17,9 @@ use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TranslatableInterface;
+use Sylius\Resource\Model\CodeAwareInterface;
 
-interface CustomerOptionValueInterface extends ResourceInterface, TranslatableInterface
+interface CustomerOptionValueInterface extends ResourceInterface, CodeAwareInterface, TranslatableInterface
 {
     public function setCode(string $code): void;
 
