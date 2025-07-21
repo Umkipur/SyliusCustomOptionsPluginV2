@@ -16,6 +16,7 @@
             <argument>Brille24\SyliusCustomerOptionsPlugin\Form\CustomerOptionType</argument>
 
             <tag name="sylius.live_component.admin" key="brille24:customer_option:form" />
+            <tag name="twig.component" key="brille24:customer_option:form" />
         </service>
     </services>
 </container>

@@ -11,7 +11,6 @@ use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveAction;
 use Symfony\UX\LiveComponent\Attribute\LiveArg;
 
-#[AsLiveComponent]
 class FormComponent {
     use LiveCollectionTrait;
 
