@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-12 mb-3">
+        <label class="form-label fw-bold">
+            {{ 'brille24.form.customer_option_value.price'|trans }}
+        </label>
+
+        {{ form_errors(hookable_metadata.context.value_form.prices) }}
+
+        <div data-controller="live-collection"
+             data-live-collection-add-button-label="{{ hookable_metadata.context.value_form.prices.vars.button_add_label|default('sylius.form.collection.add'|trans) }}"
+             data-live-collection-delete-button-label="{{ hookable_metadata.context.value_form.prices.vars.button_delete_label|default('sylius.form.collection.delete'|trans) }}"
+                {{ sylius_test_html_attribute('option-value-prices') }}>
+
+            {% for price_form in hookable_metadata.context.value_form.prices %}
+                <div class="border p-3 mb-3" {{ sylius_test_html_attribute('option-value-price', loop.index) }}>
+                    <div class="row">
+                        <div class="col-md-3">
+                            {{ form_row(price_form.channel) }}
+                        </div>
+                        <div class="col-md-3">
+                            {{ form_row(price_form.percent) }}
+                        </div>
+                        <div class="col-md-3">
+                            {{ form_row(price_form.amount) }}
+                        </div>
+                        <div class="col-md-3">
+                            {{ form_row(price_form.type) }}
+                        </div>
+                    </div>
+
+                    <div class="mt-2">
+                        <button type="button"
+                                class="btn btn-outline-danger btn-sm"
+                                data-action="live-collection#removeItem"
+                                {{ sylius_test_html_attribute('remove-option-value-price') }}>
+                            {{ 'sylius.ui.remove'|trans }}
+                        </button>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <div class="mt-2">
+                <button type="button"
+                        class="btn btn-outline-primary"
+                        data-action="live-collection#addItem"
+                        {{ sylius_test_html_attribute('add-option-value-price') }}>
+                    {{ hookable_metadata.context.value_form.prices.vars.button_add_label|default('sylius.form.collection.add'|trans) }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
