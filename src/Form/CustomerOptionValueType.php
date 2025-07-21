@@ -18,6 +18,7 @@ use Symfony\UX\LiveComponent\Form\Type\LiveCollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Sylius\Bundle\ResourceBundle\Form\EventSubscriber\AddCodeFormSubscriber;
 
 final class CustomerOptionValueType extends AbstractResourceType
 {
@@ -38,6 +39,7 @@ final class CustomerOptionValueType extends AbstractResourceType
                 'entry_type' => CustomerOptionValuePriceType::class,
                 'label' => 'brille24.form.customer_option_value.price',
             ])
+            ->addEventSubscriber(new AddCodeFormSubscriber())
         ;
     }
 
