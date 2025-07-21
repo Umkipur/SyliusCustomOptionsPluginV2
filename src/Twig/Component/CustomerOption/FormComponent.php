@@ -21,13 +21,4 @@ class FormComponent {
 
     use TemplatePropTrait;
 
-    #[LiveAction]
-    public function applyToAll(#[LiveArg] string $valueKey, #[LiveArg] string $translationKey): void
-    {
-        $value = $this->formValues['values'][$valueKey]['translations'][$translationKey]['value'];
-
-        foreach ($this->formValues['values'][$valueKey]['translations'] as &$translation) {
-            $translation['value'] = $value;
-        }
-    }
 }

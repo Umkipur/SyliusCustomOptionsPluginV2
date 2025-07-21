@@ -56,7 +56,9 @@ final class CustomerOptionType extends AbstractResourceType
                 'allow_delete' => true,
                 'by_reference' => false,
                 'label' => false,
-                'button_add_label' => 'sylius.form.option_value.add_value',
+                'button_add_options' => [
+                    'label' => 'sylius.form.option_value.add_value',
+                ]
             ])
             ->add('configuration', CustomerOptionConfigurationType::class, [
                 'label' => false,
