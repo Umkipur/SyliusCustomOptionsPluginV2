@@ -4,12 +4,4 @@ imports:
     - { resource: "mailer.yml" }
     - { resource: "ui.yml" }
     - { resource: "grids/*" }
-
-sylius_ui:
-    twig_ux:
-        live_component_tags:
-            admin:
-                route: sylius_admin_live_component
-        anonymous_component_template_prefixes:
-            sylius_admin: "@SyliusAdmin/shared/components"
-        component_default_template: "@SyliusUi/components/default.html.twig"
+    - { resource: 'twig_hooks/**/*.yaml' }
