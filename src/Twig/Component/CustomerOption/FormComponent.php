@@ -22,9 +22,6 @@ class FormComponent {
 
     use TemplatePropTrait;
 
-    #[LiveProp(name: 'brille24_customer_option', useSerializerForHydration: true)]
-    public array $formValues = [];
-
     #[LiveAction]
     public function applyToAll(#[LiveArg] string $valueKey, #[LiveArg] string $translationKey): void
     {
