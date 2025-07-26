@@ -33,4 +33,9 @@ class FormComponent {
             $translation['value'] = $value;
         }
     }
+
+    public function getFormName(): string
+    {
+        return 'brille24_customer_option';
+    }
 }
