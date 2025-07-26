@@ -23,17 +23,8 @@ class FormComponent {
 
     use TemplatePropTrait;
 
-    #[LiveProp(dehydrateWith: 'dehydrateChannel', hydrateWith: 'hydrateChannel')]
-    public ?ChannelInterface $channel = null;
-
-    public function dehydrateChannel(?ChannelInterface $channel): ?string {
-        return $channel?->getCode(); // bezpečné ID
-    }
-
-    public function hydrateChannel(?string $code): ?ChannelInterface {
-        return $this->channelRepository->findOneBy(['code' => $code]);
-    }
-
+    #[LiveProp(useSerializerForHydration: true)]
+    public array $formValues = [];
     #[LiveAction]
     public function applyToAll(#[LiveArg] string $valueKey, #[LiveArg] string $translationKey): void
     {
