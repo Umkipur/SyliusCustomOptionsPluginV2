@@ -22,7 +22,7 @@ class FormComponent {
 
     use TemplatePropTrait;
 
-    #[LiveProp(fieldName: 'brille24_customer_option', useSerializerForHydration: true)]
+    #[LiveProp(name: 'brille24_customer_option', useSerializerForHydration: true)]
     public array $formValues = [];
 
     #[LiveAction]
