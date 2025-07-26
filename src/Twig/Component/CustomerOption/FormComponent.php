@@ -12,6 +12,7 @@ use Symfony\UX\LiveComponent\Attribute\LiveAction;
 use Symfony\UX\LiveComponent\Attribute\LiveArg;
 
 class FormComponent {
+
     use LiveCollectionTrait;
 
     /** @use ResourceFormComponentTrait<CustomerOptionInterface> */
@@ -21,7 +22,7 @@ class FormComponent {
 
     use TemplatePropTrait;
 
-    #[LiveProp(useSerializerForHydration: true)]
+    #[LiveProp(fieldName: 'brille24_customer_option', useSerializerForHydration: true)]
     public array $formValues = [];
 
     #[LiveAction]
@@ -32,10 +33,5 @@ class FormComponent {
         foreach ($this->formValues['values'][$valueKey]['translations'] as &$translation) {
             $translation['value'] = $value;
         }
-    }
-
-    public function getFormName(): string
-    {
-        return 'brille24_customer_option';
     }
 }
