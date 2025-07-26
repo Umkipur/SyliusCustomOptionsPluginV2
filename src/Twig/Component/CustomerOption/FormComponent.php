@@ -23,7 +23,7 @@ class FormComponent {
 
     use TemplatePropTrait;
 
-    #[LiveProp(useSerializerForHydration: true, type: 'array<string, mixed>')]
+    #[LiveProp(useSerializerForHydration: true)]
     public array $formValues = [];
     #[LiveAction]
     public function applyToAll(#[LiveArg] string $valueKey, #[LiveArg] string $translationKey): void
