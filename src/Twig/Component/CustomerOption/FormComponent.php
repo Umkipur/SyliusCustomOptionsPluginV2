@@ -10,7 +10,8 @@ use Sylius\Bundle\UiBundle\Twig\Component\TemplatePropTrait;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveAction;
 use Symfony\UX\LiveComponent\Attribute\LiveArg;
-
+use Symfony\UX\LiveComponent\Attribute\LiveProp;
+use Sylius\Component\Core\Model\ChannelInterface;
 class FormComponent {
 
     use LiveCollectionTrait;
@@ -21,6 +22,17 @@ class FormComponent {
     }
 
     use TemplatePropTrait;
+
+    #[LiveProp(dehydrateWith: 'dehydrateChannel', hydrateWith: 'hydrateChannel')]
+    public ?ChannelInterface $channel = null;
+
+    public function dehydrateChannel(?ChannelInterface $channel): ?string {
+        return $channel?->getCode(); // bezpečné ID
+    }
+
+    public function hydrateChannel(?string $code): ?ChannelInterface {
+        return $this->channelRepository->findOneBy(['code' => $code]);
+    }
 
     #[LiveAction]
     public function applyToAll(#[LiveArg] string $valueKey, #[LiveArg] string $translationKey): void
