@@ -27,25 +27,9 @@
                         </div>
                     </div>
 
-                    <div class="mt-2">
-                        <button type="button"
-                                class="btn btn-outline-danger btn-sm"
-                                data-action="live-collection#removeItem"
-                                {{ sylius_test_html_attribute('remove-option-value-price') }}>
-                            {{ 'sylius.ui.remove'|trans }}
-                        </button>
-                    </div>
                 </div>
             {% endfor %}
 
-            <div class="mt-2">
-                <button type="button"
-                        class="btn btn-outline-primary"
-                        data-action="live-collection#addItem"
-                        {{ sylius_test_html_attribute('add-option-value-price') }}>
-                    {{ hookable_metadata.context.value_form.prices.vars.button_add_label|default('sylius.form.collection.add'|trans) }}
-                </button>
-            </div>
         </div>
     </div>
 </div>
