@@ -14,7 +14,7 @@
             <argument type="service" id="form.factory" />
             <argument>Brille24\SyliusCustomerOptionsPlugin\Entity\CustomerOptions\CustomerOption</argument>
             <argument>Brille24\SyliusCustomerOptionsPlugin\Form\CustomerOptionType</argument>
-            <argument type="service" id="sylius.repository.channel.default" />
+            <argument type="service" id="sylius.repository.channel" />
 
             <tag name="sylius.live_component.admin" key="brille24:customer_option:form" />
             <tag name="twig.component" key="brille24:customer_option:form" />

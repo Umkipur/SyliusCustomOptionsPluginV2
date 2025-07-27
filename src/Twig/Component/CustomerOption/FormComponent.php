@@ -14,7 +14,7 @@ use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Symfony\Component\Form\FormFactoryInterface;
-use Sylius\Component\Core\Repository\ChannelRepositoryInterface;
+use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 class FormComponent {
 
     use LiveCollectionTrait;
