@@ -22,9 +22,25 @@ class FormComponent {
     }
 
     use TemplatePropTrait;
+    use LiveChannelPropTrait;
 
     #[LiveProp(useSerializerForHydration: true)]
     public array $formValues = [];
+
+    public function __construct(
+        RepositoryInterface       $customerOptionRepository,
+        FormFactoryInterface      $formFactory,
+        string                    $resourceClass,
+        string                    $formClass,
+        ChannelRepositoryInterface $channelRepository,
+    ) {
+        // initialize the “resource + form” plumbing
+        $this->initialize($customerOptionRepository, $formFactory, $resourceClass, $formClass);
+
+        // initialize your Channel‐hydration
+        $this->initializeChannel($channelRepository);
+    }
+
     #[LiveAction]
     public function applyToAll(#[LiveArg] string $valueKey, #[LiveArg] string $translationKey): void
     {
