@@ -8,7 +8,6 @@
 
         <div data-controller="live-collection"
              data-live-collection-add-button-label="{{ hookable_metadata.context.value_form.prices.vars.button_add_label|default('sylius.form.collection.add'|trans) }}"
-             data-live-collection-delete-button-label="{{ hookable_metadata.context.value_form.prices.vars.button_delete_label|default('sylius.form.collection.delete'|trans) }}"
                 {{ sylius_test_html_attribute('option-value-prices') }}>
 
             {% for price_form in hookable_metadata.context.value_form.prices %}
