@@ -31,10 +31,10 @@ class FormComponent {
     public array $formValues = [];
 
     public function __construct(
-        RepositoryInterface       $customerOptionRepository,
-        FormFactoryInterface      $formFactory,
-        string                    $resourceClass,
-        string                    $formClass,
+        RepositoryInterface        $customerOptionRepository,
+        FormFactoryInterface       $formFactory,
+        string                     $resourceClass,
+        string                     $formClass,
         ChannelRepositoryInterface $channelRepository,
     ) {
         // initialize the “resource + form” plumbing
