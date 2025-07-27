@@ -34,6 +34,7 @@ final class CustomerOptionValueType extends AbstractResourceType
             ->add('prices', LiveCollectionType::class, [
                 'entry_type' => CustomerOptionValuePriceType::class,
                 'label' => 'brille24.form.customer_option_value.price',
+                'allow_delete' => false,
             ])
             ->addEventSubscriber(new AddCodeFormSubscriber())
         ;
