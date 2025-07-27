@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Brille24\SyliusCustomerOptionsPlugin\Twig\Component\CustomerOption;
 
 use Sylius\Component\Core\Model\ChannelInterface;
-use Sylius\Component\Core\Repository\ChannelRepositoryInterface;
+use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
 
 trait LiveChannelPropTrait {
