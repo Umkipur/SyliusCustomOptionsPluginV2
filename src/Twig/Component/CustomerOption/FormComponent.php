@@ -43,10 +43,11 @@ class FormComponent {
                 // the channel itself is an entity; replace it with just its code:
                 /** @var ChannelInterface $chan */
                 $chan = $price['channel'];
+
                 $price['channel'] = [
-                    'code' => $chan->getCode(),
-                    'name' => $chan->getName(),
-                    // etc… whatever you actually need
+                    'code' => $chan['code'],
+                    'name' => $chan['name'],
+                    'baseCurrency' => $chan['baseCurrency']->getId(),
                 ];
             }
         }
