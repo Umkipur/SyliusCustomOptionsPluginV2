@@ -47,7 +47,6 @@ class FormComponent {
                 $price['channel'] = [
                     'code' => $chan['code'],
                     'name' => $chan['name'],
-                    'baseCurrency' => $chan['baseCurrency']->getId(),
                 ];
             }
         }
