@@ -25,23 +25,41 @@ class FormComponent {
     }
 
     use TemplatePropTrait;
-    use LiveChannelPropTrait;
 
-    #[LiveProp(useSerializerForHydration: true)]
+    #[LiveProp(
+        hydrateWith: 'hydrateFormValues',
+        dehydrateWith: 'dehydrateFormValues',
+    )]
     public array $formValues = [];
 
-    public function __construct(
-        RepositoryInterface        $customerOptionRepository,
-        FormFactoryInterface       $formFactory,
-        string                     $resourceClass,
-        string                     $formClass,
-        ChannelRepositoryInterface $channelRepository,
-    ) {
-        // initialize the “resource + form” plumbing
-        $this->initialize($customerOptionRepository, $formFactory, $resourceClass, $formClass);
+    public function dehydrateFormValues(): array
+    {
+        // take $this->formValues (which may contain Channel or Currency entities in
+        // nested price->channel->baseCurrency) and turn every object into a scalar.
+        $data = $this->formValues;
 
-        // initialize your Channel‐hydration
-        $this->initializeChannel($channelRepository);
+        foreach ($data['values'] as &$value) {
+            foreach ($value['prices'] as &$price) {
+                // the channel itself is an entity; replace it with just its code:
+                /** @var ChannelInterface $chan */
+                $chan = $price['channel'];
+                $price['channel'] = [
+                    'code' => $chan->getCode(),
+                    'name' => $chan->getName(),
+                    // etc… whatever you actually need
+                ];
+            }
+        }
+
+        return $data;
+    }
+
+    public function hydrateFormValues(array $raw): array
+    {
+        // we don’t need to turn those arrays back into Channel objects here,
+        // because when you eventually persist you’ll do that manually.  So
+        // just return the scalar array exactly as it came in:
+        return $raw;
     }
 
     #[LiveAction]
